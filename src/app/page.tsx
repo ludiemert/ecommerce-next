@@ -1,4 +1,5 @@
 import { ProductType } from "@/types/ProductType";
+import { Product } from "./components/Product";
 
 
 async function getProducts() {
@@ -14,7 +15,7 @@ async function getProducts() {
 
 export default async function Home() {
   const products = await getProducts();
-  console.log(products)
+ // console.log(products)
 
   return (
 
@@ -24,7 +25,7 @@ export default async function Home() {
 
 
           {products.map((product: ProductType) => (
-            <div key={product.id}>{product.title}</div>
+            <Product key={product.id} product={product}></Product>
           ))}
 
         </div>
