@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SignedIn, SignedOut } from '@clerk/nextjs/app-beta';
 
 export function Navbar() {
   return (
@@ -6,6 +7,17 @@ export function Navbar() {
       <Link href="/" className="uppercase font-bold text-md h-12 flex items-center">
         Next Store
       </Link>
+
+      <div className=" flex items-center gap-8">
+        <SignedIn>
+          Usuario Logado
+        </SignedIn>
+
+        <SignedOut>
+          Fazer login
+        </SignedOut>
+
+      </div>
 
     </nav>
   )

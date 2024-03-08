@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./components/Navbar";
 import clsx from "clsx";
+import { ClerkProvider } from "@clerk/nextjs/app-beta";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,14 +18,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={clsx(inter.className, "bg-slate-400") }>
 
-        <Navbar />
+    <ClerkProvider>
+      <html lang="en">
+        <body className={clsx(inter.className, "bg-slate-400")}>
 
-        <main className=" p-16 h-screen">{children}</main>
+          <Navbar />
 
-      </body>
-    </html>
+          <main className=" p-16 h-screen">{children}</main>
+
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
